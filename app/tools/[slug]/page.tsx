@@ -35,7 +35,6 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
   useEffect(() => {
     params.then(p => setResolvedParams(p));
     
-    // Kayıtlı yorumları çek
     const savedReviews = localStorage.getItem('ai_hub_reviews');
     if (savedReviews) {
       setReviews(JSON.parse(savedReviews));
@@ -133,7 +132,6 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         <div className="border-t border-slate-800 pt-10">
           <h3 className="text-2xl font-bold mb-6">Kullanıcı Yorumları ve Puanlar</h3>
 
-          {/* Yorum Yapma Formu */}
           <form onSubmit={handleAddReview} className="bg-slate-900 p-6 rounded-2xl border border-slate-800 mb-10 space-y-4">
             <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Bu Araç İçin Yorum Yap</h4>
             
@@ -186,7 +184,6 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
             </button>
           </form>
 
-          {/* Yapılan Yorumların Listesi */}
           <div className="space-y-4">
             {toolReviews.length === 0 ? (
               <p className="text-slate-500 text-sm">Bu araç için henüz yorum yapılmamış. İlk yorum yapan sen ol!</p>

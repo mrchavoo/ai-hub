@@ -25,12 +25,6 @@ interface Tool {
   tags: string[];
 }
 
-export function generateStaticParams() {
-  return toolsData.map((tool) => ({
-    slug: tool.slug,
-  }));
-}
-
 export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const [resolvedParams, setResolvedParams] = useState<{ slug: string } | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);

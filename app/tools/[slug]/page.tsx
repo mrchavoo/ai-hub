@@ -1,7 +1,5 @@
 'use client';
 
-export const dynamic = 'force-dynamic';
-
 import { useState, useEffect } from 'react';
 import toolsData from '@/app/data/tools.json';
 import Link from 'next/link';

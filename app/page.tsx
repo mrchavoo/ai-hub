@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
-import toolsData from './data/tools.json';
 
-// SUPABASE BAĞLANTISI
-const SUPABASE_URL = 'https://vaguptcnmswwupussmrr.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_VrNIj7RK3HJGZLymm02F0Q_HdmIZfBN';
+// SUPABASE BAĞLANTISI (Kendi bilgilerinle değiştir)
+const SUPABASE_URL = 'https://SENIN_PROJE_URL.supabase.co';
+const SUPABASE_ANON_KEY = 'SENIN_ANON_PUBLIC_KEY';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 interface Review {
@@ -32,11 +31,9 @@ interface Tool {
   tags: string[];
 }
 
-const initialTools = toolsData as Tool[];
-const categories = ['Tümü', ...Array.from(new Set(initialTools.map(tool => tool.category)))];
-
 export default function Home() {
-  const [tools, setTools] = useState<Tool[]>(initialTools);
+  const [tools, setTools] = useState<Tool[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('Tümü');
   const [searchQuery, setSearchQuery] = useState('');
   const [darkMode, setDarkMode] = useState(false);
@@ -59,7 +56,25 @@ export default function Home() {
   const [formPricing, setFormPricing] = useState('Freemium');
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  // SUPABASE'DEN ARAÇLARI ÇEKME
   useEffect(() => {
+    const fetchTools = async () => {
+      try {
+        const { data, error } = await supabase.from('tools').select('*');
+        if (error) {
+          console.error('Araçlar çekilirken hata:', error);
+        } else if (data && data.length > 0) {
+          setTools(data);
+        }
+      } catch (err) {
+        console.error('Bağlantı hatası:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTools();
+
     const savedFavs = localStorage.getItem('ai_hub_favorites');
     if (savedFavs) setFavorites(JSON.parse(savedFavs));
 
@@ -88,13 +103,13 @@ export default function Home() {
     }
   }, [darkMode]);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  // YENİ ARACI SUPABASE'E KAYDETME
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formName || !formUrl || !formDesc) return;
 
-    const newTool: Tool = {
-      id: Date.now().toString(),
-      slug: formName.toLowerCase().replace(/\s+/g, '-'),
+    const newTool = {
+      slug: formName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
       name: formName,
       category: formCategory,
       shortDescription: formDesc,
@@ -105,16 +120,28 @@ export default function Home() {
       tags: [formCategory, "Yeni Eklenen"]
     };
 
-    setTools([newTool, ...tools]);
-    setSubmitSuccess(true);
-    setFormName('');
-    setFormDesc('');
-    setFormUrl('');
+    try {
+      const { data, error } = await supabase.from('tools').insert([newTool]).select();
+      if (error) {
+        alert('Araç eklenirken bir hata oluştu: ' + error.message);
+        return;
+      }
 
-    setTimeout(() => {
-      setSubmitSuccess(false);
-      setIsSubmitModalOpen(false);
-    }, 2000);
+      if (data) {
+        setTools([data[0], ...tools]);
+      }
+      setSubmitSuccess(true);
+      setFormName('');
+      setFormDesc('');
+      setFormUrl('');
+
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setIsSubmitModalOpen(false);
+      }, 2000);
+    } catch (err) {
+      console.error('Kayıt hatası:', err);
+    }
   };
 
   const handleNewsletter = async (e: React.FormEvent) => {
@@ -146,6 +173,8 @@ export default function Home() {
       setNewsletterError('Beklenmeyen bir hata oluştu.');
     }
   };
+
+  const categories = ['Tümü', ...Array.from(new Set(tools.map(tool => tool.category)))];
 
   let filteredTools = tools.filter(tool => {
     const matchesCategory = selectedCategory === 'Tümü' || tool.category === selectedCategory;
@@ -282,68 +311,72 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Kartlar Izgarası */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {filteredTools.map((tool: Tool) => {
-            const isFav = favorites.includes(tool.id);
-            const toolReviews = reviews.filter(r => r.toolId === tool.id);
-            const avgRating = toolReviews.length > 0 
-              ? (toolReviews.reduce((acc, r) => acc + r.rating, 0) / toolReviews.length).toFixed(1) 
-              : null;
+        {/* Yükleniyor Durumu */}
+        {loading ? (
+          <div className="text-center py-20 text-slate-400">Veritabanından araçlar yükleniyor...</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {filteredTools.map((tool: Tool) => {
+              const isFav = favorites.includes(tool.id);
+              const toolReviews = reviews.filter(r => r.toolId === tool.id);
+              const avgRating = toolReviews.length > 0 
+                ? (toolReviews.reduce((acc, r) => acc + r.rating, 0) / toolReviews.length).toFixed(1) 
+                : null;
 
-            return (
-              <Link 
-                key={tool.id} 
-                href={`/tools/${tool.slug}`}
-                className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between cursor-pointer relative group block"
-              >
-                <button
-                  onClick={(e) => toggleFavorite(tool.id, e)}
-                  className={`absolute top-5 right-5 p-2 rounded-full transition-all z-10 ${
-                    isFav 
-                      ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/40' 
-                      : 'text-slate-300 dark:text-slate-700 hover:text-rose-500 bg-slate-50 dark:bg-slate-800/50'
-                  }`}
-                  title={isFav ? "Favorilerden Çıkar" : "Favorilere Ekle"}
+              return (
+                <Link 
+                  key={tool.id} 
+                  href={`/tools/${tool.slug}`}
+                  className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between cursor-pointer relative group block"
                 >
-                  {isFav ? '❤️' : '🤍'}
-                </button>
+                  <button
+                    onClick={(e) => toggleFavorite(tool.id, e)}
+                    className={`absolute top-5 right-5 p-2 rounded-full transition-all z-10 ${
+                      isFav 
+                        ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/40' 
+                        : 'text-slate-300 dark:text-slate-700 hover:text-rose-500 bg-slate-50 dark:bg-slate-800/50'
+                    }`}
+                    title={isFav ? "Favorilerden Çıkar" : "Favorilere Ekle"}
+                  >
+                    {isFav ? '❤️' : '🤍'}
+                  </button>
 
-                <div>
-                  <div className="flex items-start mb-3 pr-10">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h2 className="text-xl font-bold tracking-tight">{tool.name}</h2>
-                        {avgRating && (
-                          <span className="text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded font-bold border border-amber-200 dark:border-amber-900">
-                            ⭐ {avgRating}
-                          </span>
-                        )}
+                  <div>
+                    <div className="flex items-start mb-3 pr-10">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h2 className="text-xl font-bold tracking-tight">{tool.name}</h2>
+                          {avgRating && (
+                            <span className="text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded font-bold border border-amber-200 dark:border-amber-900">
+                              ⭐ {avgRating}
+                            </span>
+                          )}
+                        </div>
+                        <span className="inline-block mt-1 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs px-2.5 py-0.5 rounded-lg font-semibold border border-blue-100 dark:border-blue-900">
+                          {tool.category}
+                        </span>
                       </div>
-                      <span className="inline-block mt-1 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs px-2.5 py-0.5 rounded-lg font-semibold border border-blue-100 dark:border-blue-900">
-                        {tool.category}
-                      </span>
                     </div>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
+                      {tool.shortDescription}
+                    </p>
                   </div>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
-                    {tool.shortDescription}
-                  </p>
-                </div>
-                
-                <div className="flex justify-between items-center border-t border-slate-100 dark:border-slate-800/80 pt-4 mt-auto">
-                  <span className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs px-2.5 py-1 rounded-lg font-medium border border-emerald-100 dark:border-emerald-900/50">
-                    {tool.pricingModel}
-                  </span>
-                  <span className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
-                    Detayları İncele ➔
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                  
+                  <div className="flex justify-between items-center border-t border-slate-100 dark:border-slate-800/80 pt-4 mt-auto">
+                    <span className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs px-2.5 py-1 rounded-lg font-medium border border-emerald-100 dark:border-emerald-900/50">
+                      {tool.pricingModel}
+                    </span>
+                    <span className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                      Detayları İncele ➔
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
 
-        {filteredTools.length === 0 && (
+        {!loading && filteredTools.length === 0 && (
           <div className="text-center py-16 text-slate-400">
             Aradığın kriterlere uygun yapay zeka aracı bulunamadı.
           </div>
@@ -404,12 +437,12 @@ export default function Home() {
 
               <h2 className="text-2xl font-extrabold mb-2">Yeni Yapay Zeka Aracı Öner</h2>
               <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">
-                Keşfettiğin veya geliştirdiğin aracı hemen listemize ekle.
+                Keşfettiğin veya geliştirdiğin aracı hemen Supabase veritabanına ekle.
               </p>
 
               {submitSuccess ? (
                 <div className="bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-900 text-emerald-700 dark:text-emerald-300 p-4 rounded-2xl text-center font-medium my-8">
-                  🎉 Araç başarıyla eklendi ve listede yayınlandı!
+                  🎉 Araç başarıyla veritabanına eklendi!
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -432,9 +465,10 @@ export default function Home() {
                       onChange={(e) => setFormCategory(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                      {categories.filter(c => c !== 'Tümü').map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
-                      ))}
+                      <option value="Metin Üretimi">Metin Üretimi</option>
+                      <option value="Görsel Tasarım">Görsel Tasarım</option>
+                      <option value="Kodlama">Kodlama</option>
+                      <option value="Verimlilik">Verimlilik</option>
                     </select>
                   </div>
 
@@ -499,7 +533,7 @@ export default function Home() {
 
       </div>
 
-      {/* FOOTER (İLETİŞİM VE SPONSORLUK) */}
+      {/* FOOTER */}
       <footer className="max-w-6xl mx-auto w-full border-t border-slate-200 dark:border-slate-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
         <div>
           © 2026 AI Hub. Tüm hakları saklıdır.

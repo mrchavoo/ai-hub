@@ -33,7 +33,7 @@ interface Tool {
 
 export default function ToolDetailPage() {
   const params = useParams();
-  const slug = params?.slug as string;
+  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
 
   const [tool, setTool] = useState<Tool | null>(null);
   const [loading, setLoading] = useState(true);
@@ -43,8 +43,17 @@ export default function ToolDetailPage() {
   const [comment, setComment] = useState('');
 
   useEffect(() => {
+    const savedReviews = localStorage.getItem('ai_hub_reviews');
+    if (savedReviews) {
+      setReviews(JSON.parse(savedReviews));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!slug) return;
+
     const fetchTool = async () => {
-      if (!slug) return;
+      setLoading(true);
       try {
         const { data, error } = await supabase
           .from('tools')
@@ -52,22 +61,21 @@ export default function ToolDetailPage() {
           .eq('slug', slug)
           .single();
 
-        if (!error && data) {
+        if (error) {
+          console.error('Supabase hatası:', error.message);
+          setTool(null);
+        } else if (data) {
           setTool(data);
         }
       } catch (err) {
         console.error('Araç detayları çekilirken hata:', err);
+        setTool(null);
       } finally {
         setLoading(false);
       }
     };
 
     fetchTool();
-
-    const savedReviews = localStorage.getItem('ai_hub_reviews');
-    if (savedReviews) {
-      setReviews(JSON.parse(savedReviews));
-    }
   }, [slug]);
 
   if (loading) {

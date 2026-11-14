@@ -1,1102 +1,438 @@
-[
-  {
-    "id": "1",
-    "slug": "chatgpt",
-    "name": "ChatGPT",
-    "categories": ["Eğitim", "Genel Asistanlar", "Kodlama ve Bilişim", "Araştırma ve Akademik", "Görsel Üretim"],
-    "shortDescription": "Öğretmen ders planı, sınav sorusu ve rubrik taslağı çıkarır; öğrenci konu anlatımı ister ve yazısına geri bildirim alır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var · Öğretmenlere özel ücretsiz kampanya şimdilik yalnızca ABD'deki okulları kapsıyor.",
-    "websiteUrl": "https://chatgpt.com",
-    "tags": ["Türkçe: Var", "Ders Planı", "Metin"]
-  },
-  {
-    "id": "2",
-    "slug": "claude",
-    "name": "Claude",
-    "categories": ["Eğitim", "Genel Asistanlar", "Kodlama ve Bilişim", "Araştırma ve Akademik"],
-    "shortDescription": "Uzun PDF ve metinleri analiz etmekte güçlü. Öğrenme modu, öğrenciye cevabı hazır vermek yerine sorularla düşündürüyor.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Kısmen (Türkçe konuşuyor, arayüzü İngilizce)",
-    "websiteUrl": "https://claude.ai",
-    "tags": ["Türkçe: Kısmen", "PDF Analizi", "Öğrenme Modu"]
-  },
-  {
-    "id": "3",
-    "slug": "gemini",
-    "name": "Gemini",
-    "categories": ["Eğitim", "Genel Asistanlar", "Kodlama ve Bilişim", "Araştırma ve Akademik", "Görsel Üretim"],
-    "shortDescription": "Konu araştırması, ders içeriği ve etkinlik fikri üretir. Google Dokümanlar ve Drive ile birlikte sorunsuz çalışır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://gemini.google.com",
-    "tags": ["Türkçe: Var", "Google Workspace", "Araştırma"]
-  },
-  {
-    "id": "4",
-    "slug": "microsoft-copilot",
-    "name": "Microsoft Copilot",
-    "categories": ["Eğitim", "Genel Asistanlar", "Sunum ve Tasarım", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Word ve PowerPoint içinde sunum ve sınav hazırlamaya yardım eder. Eğitim hesaplarında öğretmenlere yönelik Teach modülü bulunur.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://copilot.microsoft.com",
-    "tags": ["Türkçe: Var", "Office", "Sunum"]
-  },
-  {
-    "id": "5",
-    "slug": "perplexity",
-    "name": "Perplexity",
-    "categories": ["Eğitim", "Araştırma ve Akademik", "Genel Asistanlar"],
-    "shortDescription": "Her cevabın altında kaynak gösteren arama asistanı. Öğrenci ödev araştırmasında alıntıları doğrular, öğretmen konuları hızla derler.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.perplexity.ai",
-    "tags": ["Türkçe: Var", "Kaynaklı Arama", "Ödev"]
-  },
-  {
-    "id": "6",
-    "slug": "notebooklm",
-    "name": "NotebookLM",
-    "categories": ["Eğitim", "Araştırma ve Akademik", "Ses ve Müzik", "Sunum ve Tasarım"],
-    "shortDescription": "Yüklediğiniz ders notlarından Türkçe sesli özet, bilgi kartı, slayt ve çalışma rehberi üretir. Yalnızca verdiğiniz kaynaklara dayanır.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://notebooklm.google.com",
-    "tags": ["Türkçe: Var", "Sesli Özet", "Ders Notu"]
-  },
-  {
-    "id": "7",
-    "slug": "elicit",
-    "name": "Elicit",
-    "categories": ["Eğitim", "Araştırma ve Akademik"],
-    "shortDescription": "Literatür taraması, makalelerden veri çıkarma ve sistematik derleme için tasarlanmış akademik araştırma aracı.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Yok (Arayüz ve kaynak havuzu İngilizce ağırlıklı)",
-    "websiteUrl": "https://elicit.com",
-    "tags": ["Türkçe: Yok", "Literatür Taraması", "Tez"]
-  },
-  {
-    "id": "8",
-    "slug": "consensus",
-    "name": "Consensus",
-    "categories": ["Eğitim", "Araştırma ve Akademik"],
-    "shortDescription": "Bilimsel bir soruyu hakemli makalelere dayanarak özetler. Türkçe sorgu kabul eder, kaynaklar çoğunlukla İngilizcedir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Kısmen",
-    "websiteUrl": "https://consensus.app",
-    "tags": ["Türkçe: Kısmen", "Hakemli Makale", "Akademik"]
-  },
-  {
-    "id": "9",
-    "slug": "scispace",
-    "name": "SciSpace",
-    "categories": ["Eğitim", "Araştırma ve Akademik"],
-    "shortDescription": "Akademik bir PDF ile sohbet edip karmaşık bölümleri açıklatmaya yarar. Araç çıktılarının dili Türkçe seçilebilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Kısmen",
-    "websiteUrl": "https://typeset.io",
-    "tags": ["Türkçe: Kısmen", "PDF Sohbet", "Makale"]
-  },
-  {
-    "id": "10",
-    "slug": "semantic-scholar",
-    "name": "Semantic Scholar",
-    "categories": ["Eğitim", "Araştırma ve Akademik"],
-    "shortDescription": "Ücretsiz akademik arama motoru. Yapay zeka özetleri sayesinde bir makalenin işinize yarayıp yaramayacağını hızla anlarsınız.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.semanticscholar.org",
-    "tags": ["Akademik Arama", "Makale Özeti", "Ücretsiz"]
-  },
-  {
-    "id": "11",
-    "slug": "researchrabbit",
-    "name": "ResearchRabbit",
-    "categories": ["Eğitim", "Araştırma ve Akademik"],
-    "shortDescription": "Atıf ağları üzerinden ilgili makaleleri görsel olarak keşfettirir. Litmaps bünyesinde gelişmiş keşif araçları sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.researchrabbit.ai",
-    "tags": ["Atıf Ağı", "Literatür", "Görsel Harita"]
-  },
-  {
-    "id": "12",
-    "slug": "connected-papers",
-    "name": "Connected Papers",
-    "categories": ["Eğitim", "Araştırma ve Akademik"],
-    "shortDescription": "Tek bir makaleden yola çıkarak benzer çalışmaların görsel haritasını çıkarır. Literatürü ilk kez tanıyan öğrenciler için idealdir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.connectedpapers.com",
-    "tags": ["Makale Haritası", "Literatür", "Araştırma"]
-  },
-  {
-    "id": "13",
-    "slug": "madlen",
-    "name": "Madlen",
-    "categories": ["Eğitim", "Öğretmen Asistanları", "Sınav Hazırlık"],
-    "shortDescription": "Türkiye'de geliştirilen yapay zeka eğitim platformu. Öğretmene 56+ araç, öğrenciye soru çözümü ve sesli eğitmen sunar.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Yok (Kurumsal lisansla çalışır, ücretsiz demo talep edilebilir) · Türkçe: Var",
-    "websiteUrl": "https://madlen.io",
-    "tags": ["Türkçe: Var", "Yerli Girişim", "Soru Çözümü"]
-  },
-  {
-    "id": "14",
-    "slug": "magicschool",
-    "name": "MagicSchool",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "80'den fazla öğretmen aracı bir arada: Ders planı, rubrik, seviyeye uyarlanmış materyal ve veli e-postası oluşturur.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Kısmen",
-    "websiteUrl": "https://www.magicschool.ai",
-    "tags": ["Türkçe: Kısmen", "Ders Planı", "Rubrik"]
-  },
-  {
-    "id": "15",
-    "slug": "brisk-teaching",
-    "name": "Brisk Teaching",
-    "categories": ["Eğitim", "Öğretmen Asistanları", "Ölçme ve Değerlendirme"],
-    "shortDescription": "Chrome eklentisi olarak çalışır. Google Dokümanlar'daki öğrenci yazısına geri bildirim yazar ve dakikalar içinde quiz çıkarır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.briskteaching.com",
-    "tags": ["Chrome Eklentisi", "Geri Bildirim", "Quiz"]
-  },
-  {
-    "id": "16",
-    "slug": "eduaide-ai",
-    "name": "Eduaide.ai",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "Yüzü aşkın kaynak türüyle ders planı, etkinlik, soru bankası ve geri bildirim taslağı üretir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.eduaide.ai",
-    "tags": ["Ders Planı", "Soru Bankası", "Etkinlik"]
-  },
-  {
-    "id": "17",
-    "slug": "diffit",
-    "name": "Diffit",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "Herhangi bir metni farklı okuma seviyelerine uyarlar; özet, kelime listesi ve sorular hazırlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://web.diffit.me",
-    "tags": ["Okuma Seviyesi", "Farklılaştırma", "Özet"]
-  },
-  {
-    "id": "18",
-    "slug": "curipod",
-    "name": "Curipod",
-    "categories": ["Eğitim", "Öğretmen Asistanları", "Ölçme ve Değerlendirme"],
-    "shortDescription": "Yazma pratiğine odaklanan araç; öğrencinin yazısına anında güçlü yönler ve gelişim alanları şeklinde geri bildirim verir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://curipod.com",
-    "tags": ["Türkçe: Var", "Yazma Pratiği", "Geri Bildirim"]
-  },
-  {
-    "id": "19",
-    "slug": "schoolai",
-    "name": "SchoolAI",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "Öğretmenin kontrolünde öğrencilere yapay zeka çalışma alanları açar ve her öğrencinin ilerlemesini anlık izletir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://schoolai.com",
-    "tags": ["Çalışma Alanı", "Öğrenci Takibi", "Sınıf Yönetimi"]
-  },
-  {
-    "id": "20",
-    "slug": "khanmigo",
-    "name": "Khanmigo",
-    "categories": ["Eğitim", "Öğretmen Asistanları", "Sınav Hazırlık"],
-    "shortDescription": "Khan Academy'nin eğitmeni; öğrenciye cevabı vermeden adım adım rehberlik eder, öğretmene ders planı ve soru üretir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var (Ücretsiz öğretmen planı ülke kısıtlamasına tabi olabilir)",
-    "websiteUrl": "https://www.khanmigo.ai",
-    "tags": ["Türkçe: Var", "Khan Academy", "Adım Adım Rehber"]
-  },
-  {
-    "id": "21",
-    "slug": "gemini-in-google-classroom",
-    "name": "Gemini in Google Classroom",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "Google Classroom içinde otuzu aşkın yapay zeka aracı sunar. Her yaştan öğrenciye açık ve okul yöneticisi kontrolündedir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://edu.google.com/workspace-for-education/classroom/",
-    "tags": ["Google Classroom", "LMS", "Ders Hazırlığı"]
-  },
-  {
-    "id": "22",
-    "slug": "twee",
-    "name": "Twee",
-    "categories": ["Eğitim", "Öğretmen Asistanları", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Yabancı dil öğretmenleri için CEFR seviyesine uygun okuma metni, diyalog ve alıştırma üretir; YouTube videolarını derse dönüştürür.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://twee.com",
-    "tags": ["Yabancı Dil", "CEFR", "YouTube Dersi"]
-  },
-  {
-    "id": "23",
-    "slug": "teachy",
-    "name": "Teachy",
-    "categories": ["Eğitim", "Öğretmen Asistanları", "Sunum ve Tasarım"],
-    "shortDescription": "Ders planı, slayt, sınav, zihin haritası ve çalışma kâğıdı hazırlar. Ücretsiz planda her gün yenilenen kredi verilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var (Günlük yenilenen kredi) · Türkçe: Var",
-    "websiteUrl": "https://www.teachy.app",
-    "tags": ["Türkçe: Var", "Çalışma Kağıdı", "Zihin Haritası"]
-  },
-  {
-    "id": "24",
-    "slug": "flint",
-    "name": "Flint",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "Okullar için kurgulanmış yapay zeka platformu. Öğretmen sınırları belirler, öğrenci kendi hızında kişiselleştirilmiş pratik yapar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.flintk12.com",
-    "tags": ["K12", "Kişiselleştirilmiş Pratik", "Okul Platformu"]
-  },
-  {
-    "id": "25",
-    "slug": "edcafe",
-    "name": "Edcafe",
-    "categories": ["Eğitim", "Öğretmen Asistanları"],
-    "shortDescription": "Öğretmenlere yönelik yapay zeka araç seti. Ders planı, ödev, quiz ve derse özel sohbet botunu tek yerden üretip paylaşmayı sağlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.edcafe.ai",
-    "tags": ["Ders Botu", "Ödev", "Quiz"]
-  },
-  {
-    "id": "26",
-    "slug": "tested",
-    "name": "Tested",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme"],
-    "shortDescription": "Türkiye'de geliştirilen ölçme ve değerlendirme platformu. Konu başlığı veya dosyadan otomatik quiz çıkarır, açık uçlu cevapları analiz eder.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var (Test, anket, raporlama ve QR paylaşım ücretsiz; AI özellikleri 1 deneme) · Türkçe: Var",
-    "websiteUrl": "https://tested.com.tr",
-    "tags": ["Türkçe: Var", "Yerli Girişim", "Online Sınav"]
-  },
-  {
-    "id": "27",
-    "slug": "wayground",
-    "name": "Wayground (eski adıyla Quizizz)",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme", "Etkileşimli Ders ve Oyun"],
-    "shortDescription": "Bir dosyadan quiz, ders paketi ve seviyeye uyarlanmış etkinlik üretip canlı ya da ödev olarak uygulatır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Yok (Mobil uygulaması şimdilik yalnızca İngilizce)",
-    "websiteUrl": "https://wayground.com",
-    "tags": ["Türkçe: Yok", "Canlı Quiz", "Ödev"]
-  },
-  {
-    "id": "28",
-    "slug": "kahoot",
-    "name": "Kahoot!",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme", "Etkileşimli Ders ve Oyun"],
-    "shortDescription": "Sınıfın en tanıdık canlı quiz oyunu. Metin, PDF veya slayttan saniyeler içinde soru üretme özelliği sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (AI soru üretimi ücretli planlarda) · Türkçe: Var",
-    "websiteUrl": "https://kahoot.com",
-    "tags": ["Türkçe: Var", "Oyunlaştırma", "Canlı Quiz"]
-  },
-  {
-    "id": "29",
-    "slug": "quizlet",
-    "name": "Quizlet",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme", "Sınav Hazırlık"],
-    "shortDescription": "Öğrencinin kendi notlarından bilgi kartı ve deneme testi oluşturur, aralıklı tekrarla çalıştırır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://quizlet.com",
-    "tags": ["Türkçe: Var", "Bilgi Kartı", "Aralıklı Tekrar"]
-  },
-  {
-    "id": "30",
-    "slug": "gradescope",
-    "name": "Gradescope",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme"],
-    "shortDescription": "Taranmış kâğıt sınavları rubrikle notlamayı hızlandırır. Benzer cevapları gruplayıp toplu puanlama özelliği sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Toplu AI puanlama kurumsal planda) · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.gradescope.com",
-    "tags": ["Sınav Okuma", "Rubrik", "Notlandırma"]
-  },
-  {
-    "id": "31",
-    "slug": "turnitin",
-    "name": "Turnitin",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme", "Araştırma ve Akademik"],
-    "shortDescription": "Ödevlerde intihal ve yapay zeka ile üretilmiş metin oranını raporlar. AI yazısı tespiti Türkçe metinleri desteklemez.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Belirsiz (Kurumsal abonelik) · Türkçe: Yok (AI tespiti Türkçe desteklemiyor)",
-    "websiteUrl": "https://www.turnitin.com",
-    "tags": ["Türkçe: Yok", "İntihal Kontrolü", "Akademik"]
-  },
-  {
-    "id": "32",
-    "slug": "feedbackfruits",
-    "name": "FeedbackFruits",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme"],
-    "shortDescription": "LMS içinde akran değerlendirmesi ve rubrikli geri bildirim akışları kurar; bir dosyadaki rubriği AI ile sisteme aktarır.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Belirsiz",
-    "websiteUrl": "https://feedbackfruits.com",
-    "tags": ["Akran Değerlendirmesi", "Rubrik", "LMS"]
-  },
-  {
-    "id": "33",
-    "slug": "class-companion",
-    "name": "Class Companion",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme"],
-    "shortDescription": "Yazılı ödevlere öğretmenin rubriğine dayalı anında geri bildirim verir. Öğrenci düzeltip yeniden gönderir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://classcompanion.com",
-    "tags": ["Yazılı Ödev", "Rubrik", "Anında Geri Bildirim"]
-  },
-  {
-    "id": "34",
-    "slug": "snorkl",
-    "name": "Snorkl",
-    "categories": ["Eğitim", "Ölçme ve Değerlendirme"],
-    "shortDescription": "Öğrenci çözümünü sesli ve görsel olarak anlatır, yapay zeka bu akıl yürütmeye anında geri bildirim verir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Belirsiz",
-    "websiteUrl": "https://snorkl.app",
-    "tags": ["Sesli Çözüm", "Akıl Yürütme", "Geri Bildirim"]
-  },
-  {
-    "id": "35",
-    "slug": "wordwall",
-    "name": "Wordwall",
-    "categories": ["Eğitim", "Etkileşimli Ders ve Oyun"],
-    "shortDescription": "Otuzu aşkın etkinlik türü, yapay zeka araçları ve milyonlarca hazır etkinlikten oluşan kütüphane sunar; çıktı alınabilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Var",
-    "websiteUrl": "https://wordwall.net",
-    "tags": ["Türkçe: Var", "Etkinlik", "Oyunlaştırma"]
-  },
-  {
-    "id": "36",
-    "slug": "genially",
-    "name": "Genially",
-    "categories": ["Eğitim", "Etkileşimli Ders ve Oyun", "Sunum ve Tasarım"],
-    "shortDescription": "Etkileşimli sunum, kaçış odası ve oyunlaştırılmış içerik hazırlar. Yapay zeka oluşturucusu istemden quiz ve oyun çıkarır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://genially.com",
-    "tags": ["Etkileşimli Sunum", "Kaçış Odası", "Oyun"]
-  },
-  {
-    "id": "37",
-    "slug": "nearpod",
-    "name": "Nearpod",
-    "categories": ["Eğitim", "Etkileşimli Ders ve Oyun"],
-    "shortDescription": "Etkileşimli ders, anlık yoklama ve quiz bir arada. Yapay zeka ile ders ve soru üretme özellikleri sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (AI özellikleri ücretli planlarda) · Türkçe: Var",
-    "websiteUrl": "https://nearpod.com",
-    "tags": ["Türkçe: Var", "Anlık Yoklama", "Etkileşimli Ders"]
-  },
-  {
-    "id": "38",
-    "slug": "pear-deck",
-    "name": "Pear Deck",
-    "categories": ["Eğitim", "Etkileşimli Ders ve Oyun", "Sunum ve Tasarım"],
-    "shortDescription": "Google Slaytlar ve PowerPoint sunumlarına etkileşimli sorular ekler; kırkı aşkın yapay zeka aracıyla ders hazırlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.peardeck.com",
-    "tags": ["Slayt Eklentisi", "Etkileşimli Soru", "Sunum"]
-  },
-  {
-    "id": "39",
-    "slug": "educaplay",
-    "name": "Educaplay",
-    "categories": ["Eğitim", "Etkileşimli Ders ve Oyun"],
-    "shortDescription": "Yapay zeka asistanı Ray, bir içerikten eşleştirme, bulmaca ve boşluk doldurma oyunları üretir; sınıfla doğrudan paylaşılır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.educaplay.com",
-    "tags": ["Türkçe: Var", "Bulmaca", "Eşleştirme"]
-  },
-  {
-    "id": "40",
-    "slug": "kunduz",
-    "name": "Kunduz",
-    "categories": ["Eğitim", "Sınav Hazırlık"],
-    "shortDescription": "Türkiye'de geliştirilen sınav hazırlık platformu. YKS, LGS ve KPSS öğrencilerine soru çözümü, koçluk ve AI asistanı KAI sunar.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Belirsiz (Paketler hâlinde satılıyor) · Türkçe: Var",
-    "websiteUrl": "https://kunduz.com",
-    "tags": ["Türkçe: Var", "YKS / LGS", "Soru Çözümü"]
-  },
-  {
-    "id": "41",
-    "slug": "brilliant",
-    "name": "Brilliant",
-    "categories": ["Eğitim", "Sınav Hazırlık", "Kodlama ve Bilişim"],
-    "shortDescription": "Matematik, veri ve kodlamayı etkileşimli problemlerle öğretir. Öğrenci takıldığında yapay zeka eğitmeni Koji adım adım yol gösterir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Yok",
-    "websiteUrl": "https://brilliant.org",
-    "tags": ["Türkçe: Yok", "Matematik", "Etkileşimli Problem"]
-  },
-  {
-    "id": "42",
-    "slug": "photomath",
-    "name": "Photomath",
-    "categories": ["Eğitim", "Sınav Hazırlık"],
-    "shortDescription": "Kamerayla taranan matematik problemini adım adım çözümüyle açıklar. Ödev kontrolü ve konu tekrarı için kullanışlıdır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://photomath.com",
-    "tags": ["Türkçe: Var", "Matematik Çözücü", "Mobil"]
-  },
-  {
-    "id": "43",
-    "slug": "github-copilot",
-    "name": "GitHub Copilot",
-    "categories": ["Eğitim", "Kodlama ve Bilişim"],
-    "shortDescription": "Kod tamamlama, hata açıklama ve sohbetle kod yazma. Onaylı öğrenci ve öğretmenler öğrenci planıyla ücretsiz kullanabilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var (Öğrenci ve öğretmenlere ücretsiz plan) · Türkçe: Belirsiz",
-    "websiteUrl": "https://github.com/features/copilot",
-    "tags": ["Kod Tamamlama", "Öğrenci Ücretsiz", "IDE"]
-  },
-  {
-    "id": "44",
-    "slug": "cursor",
-    "name": "Cursor",
-    "categories": ["Eğitim", "Kodlama ve Bilişim"],
-    "shortDescription": "Yapay zeka destekli kod editörü. Öğrenci proje kodunu açıklatabilir ve hatasını ayıklatabilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.cursor.com",
-    "tags": ["Kod Editörü", "Hata Ayıklama", "AI IDE"]
-  },
-  {
-    "id": "45",
-    "slug": "replit",
-    "name": "Replit",
-    "categories": ["Eğitim", "Kodlama ve Bilişim"],
-    "shortDescription": "Kurulum gerektirmeden tarayıcıda kod yazdırır. Replit Agent doğal dille anlatılan bir uygulamayı üretip yayına alabilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://replit.com",
-    "tags": ["Tarayıcı IDE", "Replit Agent", "Hızlı Yayın"]
-  },
-  {
-    "id": "46",
-    "slug": "code-org",
-    "name": "Code.org",
-    "categories": ["Eğitim", "Kodlama ve Bilişim"],
-    "shortDescription": "Ücretsiz kodlama ve yapay zeka okuryazarlığı dersleri, Hour of AI etkinlikleri ve öğretmenlere yapay zeka asistanı sunar.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://code.org",
-    "tags": ["Türkçe: Var", "Ücretsiz", "AI Okuryazarlığı"]
-  },
-  {
-    "id": "47",
-    "slug": "codecombat",
-    "name": "CodeCombat",
-    "categories": ["Eğitim", "Kodlama ve Bilişim", "Etkileşimli Ders ve Oyun"],
-    "shortDescription": "Oyun oynarken Python ya da JavaScript yazdırır. AI HackStack bölümü güvenli ortamda AI okuryazarlığı projeleri yaptırır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Kısmen",
-    "websiteUrl": "https://codecombat.com",
-    "tags": ["Türkçe: Kısmen", "Oyunla Kodlama", "Python / JS"]
-  },
-  {
-    "id": "48",
-    "slug": "canva-for-education",
-    "name": "Canva (Canva for Education)",
-    "categories": ["Eğitim", "Sunum ve Tasarım", "Görsel Üretim"],
-    "shortDescription": "Sunum, çalışma kâğıdı, afiş ve infografik tasarımı. Eğitim sürümü öğretmen ve öğrencilere tamamen ücretsizdir.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var (Öğretmen ve öğrencilere eğitim sürümü ücretsiz) · Türkçe: Var",
-    "websiteUrl": "https://www.canva.com/education/",
-    "tags": ["Türkçe: Var", "Tasarım", "Ücretsiz Eğitim"]
-  },
-  {
-    "id": "49",
-    "slug": "gamma",
-    "name": "Gamma",
-    "categories": ["Eğitim", "Sunum ve Tasarım"],
-    "shortDescription": "Bir konu başlığından ya da ders notundan dakikalar içinde sunum, doküman veya tek sayfalık web sayfası üretir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Ücretsiz AI kredisi tek seferlik) · Türkçe: Var",
-    "websiteUrl": "https://gamma.app",
-    "tags": ["Türkçe: Var", "Hızlı Sunum", "Web Sayfası"]
-  },
-  {
-    "id": "50",
-    "slug": "microsoft-designer",
-    "name": "Microsoft Designer",
-    "categories": ["Eğitim", "Sunum ve Tasarım", "Görsel Üretim"],
-    "shortDescription": "Metinden sınıf duyurusu, davetiye ve afiş üretir, PowerPoint içinde tasarım önerileri sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://designer.microsoft.com",
-    "tags": ["Afiş", "Grafik Tasarım", "Microsoft"]
-  },
-  {
-    "id": "51",
-    "slug": "adobe-express",
-    "name": "Adobe Express",
-    "categories": ["Eğitim", "Sunum ve Tasarım", "Video ve Animasyon"],
-    "shortDescription": "Öğrencilerin poster, kısa video ve web sayfası üretmesi için uygun. Okul eğitim sürümü ücretsiz ve güvenli görsel aramalıdır.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var (Okullar için eğitim sürümü ücretsiz) · Türkçe: Var",
-    "websiteUrl": "https://www.adobe.com/express/",
-    "tags": ["Türkçe: Var", "Poster", "Eğitim Sürümü"]
-  },
-  {
-    "id": "52",
-    "slug": "prezi",
-    "name": "Prezi",
-    "categories": ["Eğitim", "Sunum ve Tasarım"],
-    "shortDescription": "Bir belgeden yakınlaştırmalı ve etkileşimli sunum çıkarır; slaytlardan izleyiciye anlık quiz hazırlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://prezi.com",
-    "tags": ["Türkçe: Var", "Dinamik Sunum", "Quiz"]
-  },
-  {
-    "id": "53",
-    "slug": "napkin",
-    "name": "Napkin",
-    "categories": ["Eğitim", "Sunum ve Tasarım"],
-    "shortDescription": "Ders metnini akış şemasına, zihin haritasına, infografiğe ve slayta dönüştürür. Kavram özetlerini görselleştirmek için pratiktir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.napkin.ai",
-    "tags": ["İnfografik", "Akış Şeması", "Görselleştirme"]
-  },
-  {
-    "id": "54",
-    "slug": "midjourney",
-    "name": "Midjourney",
-    "categories": ["Eğitim", "Görsel Üretim"],
-    "shortDescription": "Hikâye, tarih ve sanat derslerinde yüksek kaliteli sahne görselleri üretir.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Yok (Deneme süresi bulunmuyor) · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.midjourney.com",
-    "tags": ["Görsel Üretim", "Sanat", "İllüstrasyon"]
-  },
-  {
-    "id": "55",
-    "slug": "adobe-firefly",
-    "name": "Adobe Firefly",
-    "categories": ["Eğitim", "Görsel Üretim", "Video ve Animasyon", "Ses ve Müzik"],
-    "shortDescription": "Ticari kullanıma güvenli görsel, video ve ses üretir; sunum ve proje görsellerini hızla hazırlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Kısmen",
-    "websiteUrl": "https://firefly.adobe.com",
-    "tags": ["Türkçe: Kısmen", "Telif Güvenli", "Görsel"]
-  },
-  {
-    "id": "56",
-    "slug": "leonardo-ai",
-    "name": "Leonardo AI",
-    "categories": ["Eğitim", "Görsel Üretim"],
-    "shortDescription": "Günlük ücretsiz kredilerle ders materyali için illüstrasyon, karakter ve oyunlaştırma görselleri üretir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Günlük kredi) · Türkçe: Yok (Arayüz İngilizce)",
-    "websiteUrl": "https://leonardo.ai",
-    "tags": ["Türkçe: Yok", "Karakter", "İllüstrasyon"]
-  },
-  {
-    "id": "57",
-    "slug": "ideogram",
-    "name": "Ideogram",
-    "categories": ["Eğitim", "Görsel Üretim", "Sunum ve Tasarım"],
-    "shortDescription": "Üzerinde okunaklı yazı bulunan afiş ve kapak görselleri üretmekte başarılıdır; en iyi sonucu İngilizce metinlerde verir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Ücretsiz planda görseller herkese açık) · Türkçe: Belirsiz",
-    "websiteUrl": "https://ideogram.ai",
-    "tags": ["Tipografi", "Afiş", "Kapak Tasarımı"]
-  },
-  {
-    "id": "58",
-    "slug": "google-vids",
-    "name": "Google Vids",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Google Workspace içinde yapay zeka destekli video oluşturma ve düzenleme aracı. Ders videosu hazırlamanın en kolay yollarından biridir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz · Türkçe: Var",
-    "websiteUrl": "https://workspace.google.com/products/vids/",
-    "tags": ["Türkçe: Var", "Ders Videosu", "Google Workspace"]
-  },
-  {
-    "id": "59",
-    "slug": "google-veo-flow",
-    "name": "Google Veo (Flow)",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Veo modeliyle sesli kısa video ve sahne kurgusu hazırlar. 18 yaş sınırı nedeniyle öğretmenin materyal hazırlığı için uygundur.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://labs.google/fx/tools/flow",
-    "tags": ["Türkçe: Var", "Video Üretim", "Sahne Kurgusu"]
-  },
-  {
-    "id": "60",
-    "slug": "synthesia",
-    "name": "Synthesia",
-    "categories": ["Eğitim", "Video ve Animasyon", "Kurumsal Eğitim"],
-    "shortDescription": "Avatar sunuculu eğitim videoları hazırlar ve bir videoyu tek tıkla başka dillere çevirir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Ücretsiz planda video indirilemiyor) · Türkçe: Var",
-    "websiteUrl": "https://www.synthesia.io",
-    "tags": ["Türkçe: Var", "AI Avatar", "Video Çeviri"]
-  },
-  {
-    "id": "61",
-    "slug": "heygen",
-    "name": "HeyGen",
-    "categories": ["Eğitim", "Video ve Animasyon", "Kurumsal Eğitim"],
-    "shortDescription": "Öğretmenin dijital ikiziyle ders anlatım videosu yapar; videoları dudak senkronlu olarak başka dillere çevirir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://www.heygen.com",
-    "tags": ["Türkçe: Var", "Dijital İkiz", "Dudak Senkronu"]
-  },
-  {
-    "id": "62",
-    "slug": "runway",
-    "name": "Runway",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Metinden ya da görselden video üretir ve efekt düzenler. Medya ve film dersleri için güçlüdür.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Ücretsiz kredi tek seferlik) · Türkçe: Belirsiz",
-    "websiteUrl": "https://runwayml.com",
-    "tags": ["Video Efekt", "Sinema", "Gen-3"]
-  },
-  {
-    "id": "63",
-    "slug": "kling-ai",
-    "name": "Kling AI",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Metinden ve görselden sinematik kısa videolar üretir. Bilim ve tarih konularını canlandırmak için sık kullanılır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://klingai.com",
-    "tags": ["Sinematik Video", "Canlandırma", "Tarih / Bilim"]
-  },
-  {
-    "id": "64",
-    "slug": "invideo-ai",
-    "name": "InVideo AI",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Tek bir komutla senaryosu, görüntüleri ve seslendirmesi hazır bilgilendirme videosu üretir; mevcut videoları çevirebilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://invideo.io",
-    "tags": ["Otomatik Video", "Senaryo", "Seslendirme"]
-  },
-  {
-    "id": "65",
-    "slug": "descript",
-    "name": "Descript",
-    "categories": ["Eğitim", "Video ve Animasyon", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Videoyu ve podcast'i bir metin belgesini düzenler gibi kurgulatır; otomatik Türkçe transkript ve altyazı üretir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://www.descript.com",
-    "tags": ["Türkçe: Var", "Metin Tabanlı Kurgu", "Altyazı"]
-  },
-  {
-    "id": "66",
-    "slug": "opus-clip",
-    "name": "Opus Clip",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Uzun bir ders ya da webinar kaydından Türkçe altyazılı kısa klipler çıkarır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://www.opus.pro",
-    "tags": ["Türkçe: Var", "Kısa Klip", "Webinar Özeti"]
-  },
-  {
-    "id": "67",
-    "slug": "animaker",
-    "name": "Animaker",
-    "categories": ["Eğitim", "Video ve Animasyon"],
-    "shortDescription": "Hazır karakterlerle animasyonlu kavram anlatım videoları hazırlatır; öğrencilerin çizgi film tarzı proje ödevleri için uygundur.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.animaker.com",
-    "tags": ["Animasyon", "Çizgi Film", "Proje Ödevi"]
-  },
-  {
-    "id": "68",
-    "slug": "vyond",
-    "name": "Vyond",
-    "categories": ["Eğitim", "Video ve Animasyon", "Kurumsal Eğitim"],
-    "shortDescription": "Senaryodan animasyonlu eğitim ve senaryo tabanlı öğrenme videoları üretir; Türkçe seslendirme ve otomatik çeviri sunar.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Yok (Deneme süresi var) · Türkçe: Var",
-    "websiteUrl": "https://www.vyond.com",
-    "tags": ["Türkçe: Var", "Animasyon Eğitim", "Senaryo"]
-  },
-  {
-    "id": "69",
-    "slug": "colossyan",
-    "name": "Colossyan",
-    "categories": ["Eğitim", "Video ve Animasyon", "Kurumsal Eğitim"],
-    "shortDescription": "İçine soru eklenebilen avatarlı ve etkileşimli eğitim videoları hazırlar; LMS için SCORM çıktısı verir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://www.colossyan.com",
-    "tags": ["Türkçe: Var", "SCORM", "Etkileşimli Video"]
-  },
-  {
-    "id": "70",
-    "slug": "elevenlabs",
-    "name": "ElevenLabs",
-    "categories": ["Eğitim", "Ses ve Müzik", "Erişilebilirlik ve Özel Eğitim"],
-    "shortDescription": "Ders metnini doğal bir Türkçe sesle anlatıma çevirir. Okuma güçlüğü yaşayan öğrenciler için sesli materyal hazırlamayı kolaylaştırır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://elevenlabs.io",
-    "tags": ["Türkçe: Var", "Seslendirme", "Text-to-Speech"]
-  },
-  {
-    "id": "71",
-    "slug": "murf-ai",
-    "name": "Murf AI",
-    "categories": ["Eğitim", "Ses ve Müzik"],
-    "shortDescription": "Sunum ve eğitim videolarına Türkçe dış ses hazırlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Toplam 10 dakika ses, indirme yok) · Türkçe: Var",
-    "websiteUrl": "https://murf.ai",
-    "tags": ["Türkçe: Var", "Dış Ses", "Sunum Sesi"]
-  },
-  {
-    "id": "72",
-    "slug": "adobe-podcast",
-    "name": "Adobe Podcast (Enhance Speech)",
-    "categories": ["Eğitim", "Ses ve Müzik"],
-    "shortDescription": "Sınıfta ya da evde çekilen ders videosundaki gürültü ve yankıyı tek tıkla temizler.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://podcast.adobe.com",
-    "tags": ["Gürültü Temizleme", "Ses İyileştirme", "Podcast"]
-  },
-  {
-    "id": "73",
-    "slug": "suno",
-    "name": "Suno",
-    "categories": ["Eğitim", "Ses ve Müzik"],
-    "shortDescription": "Öğrencilerin bir ders konusunu şarkıya dönüştürmesini sağlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı (Ücretsiz planda indirme ve ticari kullanım yok) · Türkçe: Belirsiz",
-    "websiteUrl": "https://suno.com",
-    "tags": ["Müzik Üretimi", "Eğitici Şarkı", "Yaratıcılık"]
-  },
-  {
-    "id": "74",
-    "slug": "speechify",
-    "name": "Speechify",
-    "categories": ["Eğitim", "Ses ve Müzik", "Erişilebilirlik ve Özel Eğitim"],
-    "shortDescription": "PDF ve ders notlarını Türkçe sesli okur. Disleksi ya da görme güçlüğü yaşayan öğrenciler için önemli bir erişilebilirlik aracıdır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://speechify.com",
-    "tags": ["Türkçe: Var", "Sesli Okuma", "Erişilebilirlik"]
-  },
-  {
-    "id": "75",
-    "slug": "duolingo",
-    "name": "Duolingo",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Türkçe konuşanlar için ücretsiz İngilizce ve Almanca kursları ile oyunlaştırılmış dil pratiği sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.duolingo.com",
-    "tags": ["Türkçe: Var", "Yabancı Dil", "Oyunlaştırma"]
-  },
-  {
-    "id": "76",
-    "slug": "busuu",
-    "name": "Busuu",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Türkçe arayüzle kısa dersler, yapay zeka destekli tekrar araçları ve anadili konuşanlardan geri bildirim sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://www.busuu.com",
-    "tags": ["Türkçe: Var", "Dil Kursu", "Tekrar"]
-  },
-  {
-    "id": "77",
-    "slug": "speak",
-    "name": "Speak",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Yapay zeka eğitmenle sesli konuşma pratiği yaptırır ve telaffuz ile ifade üzerine anında geri bildirim verir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Kısmen",
-    "websiteUrl": "https://www.speak.com",
-    "tags": ["Türkçe: Kısmen", "Konuşma Pratiği", "Telaffuz"]
-  },
-  {
-    "id": "78",
-    "slug": "elsa-speak",
-    "name": "ELSA Speak",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "İngilizce telaffuz analizi, rol yapma ve sunum provası sunar; öğrenci konuşma puanını zaman içinde takip edebilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://elsaspeak.com",
-    "tags": ["İngilizce Telaffuz", "Konuşma Koçu", "Sunum Provası"]
-  },
-  {
-    "id": "79",
-    "slug": "praktika",
-    "name": "Praktika",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Avatar bir eğitmenle senaryolu konuşma pratiği yaptırır; dilbilgisi ve telaffuz geri bildirimi verir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://praktika.ai",
-    "tags": ["AI Avatar", "İngilizce Pratik", "Dilbilgisi"]
-  },
-  {
-    "id": "80",
-    "slug": "grammarly",
-    "name": "Grammarly",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Yazım, dilbilgisi ve ton kontrolü sağlar. Türkçede yalnızca temel yazım ve dilbilgisi desteği bulunur.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Kısmen",
-    "websiteUrl": "https://www.grammarly.com",
-    "tags": ["Türkçe: Kısmen", "Yazım Kontrolü", "İngilizce Yazma"]
-  },
-  {
-    "id": "81",
-    "slug": "quillbot",
-    "name": "QuillBot",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri", "Araştırma ve Akademik"],
-    "shortDescription": "Metni farklı sözcüklerle yeniden yazar, özetler ve dilbilgisini denetler. Akademik yazma pratiğinde yardımcıdır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Belirsiz",
-    "websiteUrl": "https://quillbot.com",
-    "tags": ["Paraphrasing", "Özetleme", "Akademik Yazım"]
-  },
-  {
-    "id": "82",
-    "slug": "deepl",
-    "name": "DeepL",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Yabancı dildeki makale ve ders materyalini yüksek doğrulukla Türkçeye çevirir. DeepL Write ile metinler iyileştirilebilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.deepl.com",
-    "tags": ["Türkçe: Var", "Çeviri", "DeepL Write"]
-  },
-  {
-    "id": "83",
-    "slug": "microsoft-reading-coach",
-    "name": "Microsoft Reading Coach",
-    "categories": ["Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Öğrenci sesli okurken yapay zeka akıcılık ve telaffuz hatalarını ölçüp çalışma önerir.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Kısmen (Türkçede hikâye üretme özelliği yok)",
-    "websiteUrl": "https://coach.microsoft.com",
-    "tags": ["Türkçe: Kısmen", "Sesli Okuma", "Telaffuz"]
-  },
-  {
-    "id": "84",
-    "slug": "engelsiz-ceviri",
-    "name": "Engelsiz Çeviri",
-    "categories": ["Eğitim", "Erişilebilirlik ve Özel Eğitim", "Dil Öğrenimi ve Çeviri"],
-    "shortDescription": "Türkiye'de geliştirilen yapay zeka destekli işaret dili çeviri sistemi. İçerikleri Türk İşaret Dili'ne (TİD) aktarır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Belirsiz (Kurumlara ücretsiz demo sunuluyor) · Türkçe: Var",
-    "websiteUrl": "https://www.engelsizceviri.com",
-    "tags": ["Türkçe: Var", "İşaret Dili", "Yerli Girişim"]
-  },
-  {
-    "id": "85",
-    "slug": "microsoft-immersive-reader",
-    "name": "Microsoft Immersive Reader",
-    "categories": ["Eğitim", "Erişilebilirlik ve Özel Eğitim"],
-    "shortDescription": "Metni sesli okur, hecelere ayırır ve çevirir. Word, Edge ve Teams içinde kurulum gerektirmeden çalışır.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.microsoft.com/en-us/edge/features/immersive-reader",
-    "tags": ["Türkçe: Var", "Okuma Desteği", "Ücretsiz"]
-  },
-  {
-    "id": "86",
-    "slug": "seeing-ai",
-    "name": "Seeing AI",
-    "categories": ["Eğitim", "Erişilebilirlik ve Özel Eğitim"],
-    "shortDescription": "Görme engelli öğrenciye basılı metni, fotoğrafı ve belgeyi sesli olarak betimler; görsel hakkında soru sorulabilir.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.seeingai.com",
-    "tags": ["Türkçe: Var", "Görme Engelli", "Sesli Betimleme"]
-  },
-  {
-    "id": "87",
-    "slug": "be-my-eyes",
-    "name": "Be My Eyes",
-    "categories": ["Eğitim", "Erişilebilirlik ve Özel Eğitim"],
-    "shortDescription": "Görme engelli öğrenci ders materyalinin fotoğrafını çekip yapay zekadan betimleme alır ya da gönüllüye bağlanır.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Var",
-    "websiteUrl": "https://www.bemyeyes.com",
-    "tags": ["Türkçe: Var", "Erişilebilirlik", "Görsel Betimleme"]
-  },
-  {
-    "id": "88",
-    "slug": "read-and-write",
-    "name": "Read&Write",
-    "categories": ["Eğitim", "Erişilebilirlik ve Özel Eğitim"],
-    "shortDescription": "Okuma güçlüğü yaşayan öğrenciye sesli okuma, metin sadeleştirme, kelime tahmini ve çeviri sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.everway.com/products/read-and-write/",
-    "tags": ["Disleksi", "Metin Sadeleştirme", "Özel Eğitim"]
-  },
-  {
-    "id": "89",
-    "slug": "goblin-tools",
-    "name": "Goblin Tools",
-    "categories": ["Eğitim", "Erişilebilirlik ve Özel Eğitim", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Nöroçeşitli öğrenciler için ödevi küçük adımlara böler, metnin tonunu ayarlar ve bir işin süresini tahmin eder.",
-    "pricingModel": "Ücretsiz",
-    "priceDetails": "Ücretsiz plan: Var · Türkçe: Yok",
-    "websiteUrl": "https://goblin.tools",
-    "tags": ["Türkçe: Yok", "Görev Parçalama", "Nöroçeşitlilik"]
-  },
-  {
-    "id": "90",
-    "slug": "transkriptor",
-    "name": "Transkriptor",
-    "categories": ["Eğitim", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Ses ve videoyu yüzden fazla dilde metne çevirir; ders kaydı, röportaj ve toplantılar için güçlü Türkçe desteği sunar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://transkriptor.com",
-    "tags": ["Türkçe: Var", "Deşifre", "Ses Metne"]
-  },
-  {
-    "id": "91",
-    "slug": "fireflies-ai",
-    "name": "Fireflies.ai",
-    "categories": ["Eğitim", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Online dersleri ve toplantıları kaydedip transkript, özet ve aksiyon maddelerini otomatik çıkarır.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://fireflies.ai",
-    "tags": ["Toplantı Notu", "Transkript", "Ders Kaydı"]
-  },
-  {
-    "id": "92",
-    "slug": "harpa-ai",
-    "name": "Harpa AI",
-    "categories": ["Eğitim", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Tarayıcı eklentisi olarak web sayfalarını ve YouTube videolarını özetler, tekrar eden içerik görevlerini otomatikleştirir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://harpa.ai",
-    "tags": ["Türkçe: Var", "Chrome Eklentisi", "Sayfa Özeti"]
-  },
-  {
-    "id": "93",
-    "slug": "zapier",
-    "name": "Zapier",
-    "categories": ["Eğitim", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "Kayıt, hatırlatma ve raporlama gibi iş akışlarını doğal dille kurdurur; rutin eğitim operasyonlarını otomatikleştirir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://zapier.com",
-    "tags": ["Otomasyon", "İş Akışı", "Entegrasyon"]
-  },
-  {
-    "id": "94",
-    "slug": "goodnotes",
-    "name": "Goodnotes",
-    "categories": ["Eğitim", "Verimlilik ve Transkripsiyon"],
-    "shortDescription": "El yazısı notlardan quiz üretir, notlara soru sormayı sağlar ve ders kaydını yazıya döküp özetler.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://www.goodnotes.com",
-    "tags": ["Türkçe: Var", "El Yazısı Not", "Tablet"]
-  },
-  {
-    "id": "95",
-    "slug": "articulate-360-ai",
-    "name": "Articulate 360 AI",
-    "categories": ["Eğitim", "Kurumsal Eğitim"],
-    "shortDescription": "Kurs taslağı, avatarlı eğitim videosu ve 80+ dile çeviri üretir. Yapay zeka ajanı Nova ile hızlı e-öğrenme içeriği hazırlar.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.articulate.com",
-    "tags": ["E-Öğrenme", "Kurs Taslağı", "Kurumsal"]
-  },
-  {
-    "id": "96",
-    "slug": "docebo",
-    "name": "Docebo",
-    "categories": ["Eğitim", "Kurumsal Eğitim"],
-    "shortDescription": "Kurumsal akademiler için eğitim içeriği ve değerlendirme üretir, içerikleri çevirir ve becerileri eşleştirir.",
-    "pricingModel": "Ücretli",
-    "priceDetails": "Ücretsiz plan: Yok · Türkçe: Var",
-    "websiteUrl": "https://www.docebo.com",
-    "tags": ["Türkçe: Var", "LMS", "Kurumsal Akademi"]
-  },
-  {
-    "id": "97",
-    "slug": "360learning",
-    "name": "360Learning",
-    "categories": ["Eğitim", "Kurumsal Eğitim"],
-    "shortDescription": "Yapay zeka asistanıyla çalışan kurs içeriğine soru sorabilir; yönetici yüzlerce kursu toplu olarak güncelleyebilir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Var",
-    "websiteUrl": "https://360learning.com",
-    "tags": ["Türkçe: Var", "İşbirlikçi Öğrenme", "LMS"]
-  },
-  {
-    "id": "98",
-    "slug": "coursebox-ai",
-    "name": "Coursebox AI",
-    "categories": ["Eğitim", "Kurumsal Eğitim"],
-    "shortDescription": "Bir dokümandan dakikalar içinde kurs, quiz, avatarlı video ve kursa özel yapay zeka eğitmen oluşturur.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.coursebox.ai",
-    "tags": ["Kurs Oluşturucu", "AI Eğitmen", "Quiz"]
-  },
-  {
-    "id": "99",
-    "slug": "mindsmith",
-    "name": "Mindsmith",
-    "categories": ["Eğitim", "Kurumsal Eğitim"],
-    "shortDescription": "Sunum ve uzman materyalinden etkileşimli ders, sesli diyalog pratiği ve SCORM paketi üretir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.mindsmith.ai",
-    "tags": ["SCORM", "Mikro Öğrenme", "Etkileşimli Ders"]
-  },
-  {
-    "id": "100",
-    "slug": "easygenerator",
-    "name": "Easygenerator",
-    "categories": ["Eğitim", "Kurumsal Eğitim"],
-    "shortDescription": "Konu uzmanı çalışanın bir yapay zeka ajanıyla sohbet ederek kurs yazmasını sağlar; kursları 75 dile çevirir.",
-    "pricingModel": "Freemium",
-    "priceDetails": "Ücretsiz plan: Sınırlı · Türkçe: Belirsiz",
-    "websiteUrl": "https://www.easygenerator.com",
-    "tags": ["Kurs Yazımı", "75 Dil Çeviri", "Kurumsal"]
-  }
-]
+'use client';
+
+import { useState, useEffect } from 'react';
+import toolsData from '@/app/data/tools.json';
+import Link from 'next/link';
+
+interface Tool {
+  id: string;
+  slug: string;
+  name: string;
+  category?: string;
+  categories?: string[];
+  shortDescription: string;
+  pricingModel: string;
+  priceDetails?: string;
+  websiteUrl: string;
+  tags?: string[];
+}
+
+const getToolCategories = (tool: Tool): string[] => {
+  if (tool.categories && tool.categories.length > 0) return tool.categories;
+  if (tool.category) return [tool.category];
+  return ['Genel'];
+};
+
+export default function HomePage() {
+  const [tools, setTools] = useState<Tool[]>(toolsData as Tool[]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Tümü');
+  const [sortBy, setSortBy] = useState('default');
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+
+  // Yeni araç ekleme modalı
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [newCategories, setNewCategories] = useState('Eğitim, Genel Asistanlar');
+  const [newDesc, setNewDesc] = useState('');
+  const [newPricing, setNewPricing] = useState('Freemium');
+  const [newUrl, setNewUrl] = useState('');
+
+  // Bülten aboneliği
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    const savedFavs = localStorage.getItem('ai_hub_favorites');
+    if (savedFavs) {
+      setFavorites(JSON.parse(savedFavs));
+    }
+
+    const customTools = localStorage.getItem('ai_hub_custom_tools');
+    if (customTools) {
+      setTools([...(toolsData as Tool[]), ...JSON.parse(customTools)]);
+    }
+  }, []);
+
+  const toggleFavorite = (id: string) => {
+    const updated = favorites.includes(id)
+      ? favorites.filter((favId) => favId !== id)
+      : [...favorites, id];
+    setFavorites(updated);
+    localStorage.setItem('ai_hub_favorites', JSON.stringify(updated));
+  };
+
+  const allCategories = Array.from(
+    new Set(tools.flatMap((t) => getToolCategories(t)))
+  );
+  const categories = ['Tümü', ...allCategories];
+
+  const filteredTools = tools
+    .filter((tool) => {
+      const toolCats = getToolCategories(tool);
+
+      const matchesSearch =
+        tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        toolCats.some((c) => c.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (tool.tags && tool.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())));
+
+      const matchesCategory =
+        selectedCategory === 'Tümü' || toolCats.includes(selectedCategory);
+
+      const matchesFav = !showOnlyFavorites || favorites.includes(tool.id);
+
+      return matchesSearch && matchesCategory && matchesFav;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'name-asc') return a.name.localeCompare(b.name);
+      if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
+      return 0;
+    });
+
+  const handleAddTool = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newName || !newDesc || !newUrl) return;
+
+    const slug = newName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+
+    const parsedCategories = newCategories
+      .split(',')
+      .map((c) => c.trim())
+      .filter(Boolean);
+
+    const created: Tool = {
+      id: Date.now().toString(),
+      slug,
+      name: newName,
+      categories: parsedCategories.length > 0 ? parsedCategories : ['Genel'],
+      shortDescription: newDesc,
+      pricingModel: newPricing,
+      priceDetails: newPricing,
+      websiteUrl: newUrl.startsWith('http') ? newUrl : `https://${newUrl}`,
+      tags: parsedCategories,
+    };
+
+    const existingCustom = JSON.parse(localStorage.getItem('ai_hub_custom_tools') || '[]');
+    const updatedCustom = [created, ...existingCustom];
+    localStorage.setItem('ai_hub_custom_tools', JSON.stringify(updatedCustom));
+
+    setTools([created, ...tools]);
+    setNewName('');
+    setNewDesc('');
+    setNewUrl('');
+    setIsModalOpen(false);
+  };
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail('');
+  };
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100 px-6 py-12 md:px-16">
+      <div className="max-w-6xl mx-auto">
+        {/* Üst Başlık ve Butonlar */}
+        <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              AI Hub
+            </h1>
+            <p className="text-slate-400 mt-2 text-base md:text-lg">
+              En iyi yapay zeka araçlarını keşfet, incele ve favorilerine ekle.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors shadow-md cursor-pointer"
+            >
+              + Aracını Ekle
+            </button>
+          </div>
+        </header>
+
+        {/* Arama, Sıralama ve Favori Filtresi */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
+          <div className="md:col-span-6">
+            <input
+              type="text"
+              placeholder="Araç adı, kategori veya özellik ara (örn: ChatGPT, kodlama, eğitim)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div className="md:col-span-3">
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="default">Varsayılan Sıralama</option>
+              <option value="name-asc">İsim (A - Z)</option>
+              <option value="name-desc">İsim (Z - A)</option>
+            </select>
+          </div>
+
+          <div className="md:col-span-3">
+            <button
+              onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
+              className={`w-full px-4 py-3 rounded-xl text-sm font-semibold border transition-colors cursor-pointer ${
+                showOnlyFavorites
+                  ? 'bg-rose-950/60 border-rose-700 text-rose-300'
+                  : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700'
+              }`}
+            >
+              ❤️ Favorilerim ({favorites.length})
+            </button>
+          </div>
+        </div>
+
+        {/* Kategori Sekmeleri */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
+                selectedCategory === cat
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Araç Kartları Grid */}
+        {filteredTools.length === 0 ? (
+          <div className="text-center py-16 bg-slate-900/50 rounded-2xl border border-slate-800 mb-16">
+            <p className="text-slate-400 text-base">Aramanıza uygun yapay zeka aracı bulunamadı.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            {filteredTools.map((tool) => {
+              const isFav = favorites.includes(tool.id);
+              const toolCats = getToolCategories(tool);
+              return (
+                <div
+                  key={tool.id}
+                  className="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 flex flex-col justify-between transition-all shadow-sm"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-2 mb-4">
+                      <div className="flex flex-wrap gap-1.5">
+                        {toolCats.map((cat) => (
+                          <span
+                            key={cat}
+                            className="bg-blue-950/60 text-blue-300 border border-blue-900/80 text-[11px] px-2.5 py-0.5 rounded-lg font-medium"
+                          >
+                            {cat}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg">
+                          {tool.pricingModel}
+                        </span>
+                        <button
+                          onClick={() => toggleFavorite(tool.id)}
+                          title="Favorilere Ekle"
+                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors cursor-pointer"
+                        >
+                          {isFav ? '❤️' : '🤍'}
+                        </button>
+                      </div>
+                    </div>
+
+                    <Link href={`/tools/${tool.slug}`}>
+                      <h2 className="text-xl font-bold text-slate-100 hover:text-blue-400 transition-colors mb-2">
+                        {tool.name}
+                      </h2>
+                    </Link>
+
+                    <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                      {tool.shortDescription}
+                    </p>
+                  </div>
+
+                  <div>
+                    {tool.tags && tool.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {tool.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] bg-slate-800/80 text-slate-400 px-2 py-0.5 rounded-md"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href={`/tools/${tool.slug}`}
+                        className="flex-1 text-center bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-xl text-xs font-semibold transition-colors"
+                      >
+                        İncele
+                      </Link>
+                      <a
+                        href={tool.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-semibold transition-colors"
+                      >
+                        Siteye Git ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Bülten Bölümü */}
+        <section className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center mb-12">
+          <h3 className="text-2xl font-bold mb-2">En Yeni AI Araçlarından Haberdar Ol</h3>
+          <p className="text-slate-400 text-sm mb-6">
+            Her hafta çıkan en iyi yeni yapay zeka araçları ve fırsatları doğrudan e-postana gelsin.
+          </p>
+
+          {subscribed ? (
+            <p className="text-emerald-400 font-semibold text-sm">
+              ✅ Bültene başarıyla abone oldun!
+            </p>
+          ) : (
+            <form onSubmit={handleSubscribe} className="max-w-md mx-auto flex gap-2">
+              <input
+                type="email"
+                required
+                placeholder="E-posta adresini yaz..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
+              >
+                Abone Ol 🚀
+              </button>
+            </form>
+          )}
+        </section>
+
+        {/* Footer */}
+        <footer className="text-center text-xs text-slate-500 border-t border-slate-900 pt-8">
+          <p>© 2026 AI Hub. Tüm hakları saklıdır.</p>
+          <p className="mt-1">
+            İletişim & Sponsorluk:{' '}
+            <a href="mailto:torqbox.tr@gmail.com" className="text-blue-400 hover:underline">
+              torqbox.tr@gmail.com
+            </a>
+          </p>
+        </footer>
+      </div>
+
+      {/* Araç Ekleme Modalı */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-bold">Yeni AI Aracı Ekle</h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-slate-400 hover:text-white text-xl cursor-pointer"
+              >
+                ×
+              </button>
+            </div>
+
+            <form onSubmit={handleAddTool} className="space-y-4">
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">Araç Adı</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Örn: Perplexity AI"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">Kategoriler (Virgülle)</label>
+                  <input
+                    type="text"
+                    required
+                    value={newCategories}
+                    onChange={(e) => setNewCategories(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-slate-400 mb-1">Fiyatlandırma</label>
+                  <select
+                    value={newPricing}
+                    onChange={(e) => setNewPricing(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white"
+                  >
+                    <option value="Ücretsiz">Ücretsiz</option>
+                    <option value="Freemium">Freemium</option>
+                    <option value="Ücretli">Ücretli</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">Kısa Açıklama</label>
+                <textarea
+                  required
+                  rows={3}
+                  placeholder="Bu araç ne işe yarar?"
+                  value={newDesc}
+                  onChange={(e) => setNewDesc(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs text-slate-400 mb-1">Web Sitesi URL</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="https://..."
+                  value={newUrl}
+                  onChange={(e) => setNewUrl(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
+              >
+                Aracı Ekle
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </main>
+  );
+}

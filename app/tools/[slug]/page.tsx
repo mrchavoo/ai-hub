@@ -18,7 +18,8 @@ interface Tool {
   id: string;
   slug: string;
   name: string;
-  category: string;
+  category?: string;
+  categories?: string[];
   shortDescription: string;
   pricingModel: string;
   priceDetails: string;
@@ -52,6 +53,13 @@ export default function ToolDetailPage() {
       </div>
     );
   }
+
+  const toolCategories =
+    tool.categories && tool.categories.length > 0
+      ? tool.categories
+      : tool.category
+      ? [tool.category]
+      : ['Genel'];
 
   const toolReviews = reviews.filter((r) => r.toolId === tool.id);
   const avgRating =
@@ -88,10 +96,15 @@ export default function ToolDetailPage() {
           ← Ana Sayfaya Dön
         </Link>
 
-        <div className="flex items-center gap-3 mb-3">
-          <span className="bg-blue-950/50 text-blue-300 text-xs px-3 py-1 rounded-lg font-semibold border border-blue-900">
-            {tool.category}
-          </span>
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          {toolCategories.map((cat) => (
+            <span
+              key={cat}
+              className="bg-blue-950/50 text-blue-300 text-xs px-3 py-1 rounded-lg font-semibold border border-blue-900"
+            >
+              {cat}
+            </span>
+          ))}
           {avgRating && (
             <span className="text-xs bg-amber-950/40 text-amber-400 px-3 py-1 rounded-lg font-bold border border-amber-900">
               ⭐ {avgRating} ({toolReviews.length} Değerlendirme)

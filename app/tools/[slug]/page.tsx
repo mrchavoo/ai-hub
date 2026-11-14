@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import toolsData from '@/app/data/tools.json';
 import Link from 'next/link';
 
@@ -22,30 +23,26 @@ interface Tool {
   pricingModel: string;
   priceDetails: string;
   websiteUrl: string;
-  tags: string[];
+  tags?: string[];
 }
 
-export default function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const [resolvedParams, setResolvedParams] = useState<{ slug: string } | null>(null);
+export default function ToolDetailPage() {
+  const params = useParams();
+  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
+
   const [reviews, setReviews] = useState<Review[]>([]);
   const [userName, setUserName] = useState('');
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
 
   useEffect(() => {
-    params.then(p => setResolvedParams(p));
-    
     const savedReviews = localStorage.getItem('ai_hub_reviews');
     if (savedReviews) {
       setReviews(JSON.parse(savedReviews));
     }
-  }, [params]);
+  }, []);
 
-  if (!resolvedParams) {
-    return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Yükleniyor...</div>;
-  }
-
-  const tool = (toolsData as Tool[]).find(t => t.slug === resolvedParams.slug);
+  const tool = (toolsData as Tool[]).find((t) => t.slug === slug);
 
   if (!tool) {
     return (
@@ -56,10 +53,11 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
     );
   }
 
-  const toolReviews = reviews.filter(r => r.toolId === tool.id);
-  const avgRating = toolReviews.length > 0 
-    ? (toolReviews.reduce((acc, r) => acc + r.rating, 0) / toolReviews.length).toFixed(1) 
-    : null;
+  const toolReviews = reviews.filter((r) => r.toolId === tool.id);
+  const avgRating =
+    toolReviews.length > 0
+      ? (toolReviews.reduce((acc, r) => acc + r.rating, 0) / toolReviews.length).toFixed(1)
+      : null;
 
   const handleAddReview = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,7 +69,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
       userName,
       rating: Number(rating),
       comment,
-      date: new Date().toLocaleDateString('tr-TR')
+      date: new Date().toLocaleDateString('tr-TR'),
     };
 
     const updatedReviews = [newReview, ...reviews];
@@ -107,22 +105,28 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
         </p>
 
         <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 mb-8">
-          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Fiyatlandırma Detayları</h3>
-          <p className="text-slate-200 text-base font-medium">{tool.priceDetails}</p>
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+            Fiyatlandırma Detayları
+          </h3>
+          <p className="text-slate-200 text-base font-medium">
+            {tool.priceDetails || 'Fiyatlandırma detayları belirtilmemiş.'}
+          </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          {tool.tags.map(tag => (
-            <span key={tag} className="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg">
-              #{tag}
-            </span>
-          ))}
-        </div>
+        {tool.tags && tool.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8">
+            {tool.tags.map((tag) => (
+              <span key={tag} className="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
 
-        <a 
-          href={tool.websiteUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={tool.websiteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-2xl font-bold transition-colors shadow-lg mb-16"
         >
           Resmi Web Sitesini Ziyaret Et ➔
@@ -133,12 +137,14 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
           <h3 className="text-2xl font-bold mb-6">Kullanıcı Yorumları ve Puanlar</h3>
 
           <form onSubmit={handleAddReview} className="bg-slate-900 p-6 rounded-2xl border border-slate-800 mb-10 space-y-4">
-            <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Bu Araç İçin Yorum Yap</h4>
-            
+            <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">
+              Bu Araç İçin Yorum Yap
+            </h4>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-1">Adınız</label>
-                <input 
+                <input
                   type="text"
                   required
                   placeholder="Adınız Soyadınız"
@@ -166,7 +172,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
 
             <div>
               <label className="block text-xs font-medium text-slate-400 mb-1">Yorumunuz</label>
-              <textarea 
+              <textarea
                 required
                 rows={3}
                 placeholder="Bu araç hakkında ne düşünüyorsunuz?"
@@ -176,7 +182,7 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
               />
             </div>
 
-            <button 
+            <button
               type="submit"
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold text-sm transition-colors shadow-sm"
             >
@@ -194,16 +200,13 @@ export default function ToolDetailPage({ params }: { params: Promise<{ slug: str
                     <span className="font-bold text-sm text-slate-200">{rev.userName}</span>
                     <span className="text-xs text-slate-500">{rev.date}</span>
                   </div>
-                  <div className="text-amber-400 text-xs mb-2">
-                    {'⭐'.repeat(rev.rating)}
-                  </div>
+                  <div className="text-amber-400 text-xs mb-2">{'⭐'.repeat(rev.rating)}</div>
                   <p className="text-slate-300 text-sm leading-relaxed">{rev.comment}</p>
                 </div>
               ))
             )}
           </div>
         </div>
-
       </div>
     </main>
   );

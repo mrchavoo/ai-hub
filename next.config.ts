@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  output: 'standalone', // Eğer burada 'export' yazıyorsa sil, yoksa bu bloğu ekle
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

@@ -3,12 +3,19 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
+import toolsData from '@/app/data/tools.json';
 import Link from 'next/link';
 
-// SUPABASE BAĞLANTISI (app/page.tsx dosyasındaki kendi bilgilerinle değiştir)
+// BURAYA KENDİ SUPABASE BİLGİLERİNİ YAZ (app/page.tsx ile aynı olsun)
 const SUPABASE_URL = 'https://vaguptcnmswwupussmrr.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_VrNIj7RK3HJGZLymm02F0Q_HdmIZfBN';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const isSupabaseConfigured =
+  SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('https://vaguptcnmswwupussmrr.supabase.co');
+
+const supabase = isSupabaseConfigured
+  ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
 
 interface Review {
   id: string;
@@ -28,7 +35,7 @@ interface Tool {
   pricingModel: string;
   priceDetails: string;
   websiteUrl: string;
-  tags: string[];
+  tags?: string[];
 }
 
 export default function ToolDetailPage() {
@@ -50,26 +57,35 @@ export default function ToolDetailPage() {
   }, []);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug) {
+      setLoading(false);
+      return;
+    }
 
     const fetchTool = async () => {
       setLoading(true);
       try {
-        const { data, error } = await supabase
-          .from('tools')
-          .select('*')
-          .eq('slug', slug)
-          .single();
+        if (supabase) {
+          const { data, error } = await supabase
+            .from('tools')
+            .select('*')
+            .eq('slug', slug)
+            .single();
 
-        if (error) {
-          console.error('Supabase hatası:', error.message);
-          setTool(null);
-        } else if (data) {
-          setTool(data);
+          if (!error && data) {
+            setTool(data);
+            setLoading(false);
+            return;
+          }
         }
+
+        // Supabase'de bulunamazsa veya ayarlı değilse tools.json'dan bul
+        const localTool = (toolsData as Tool[]).find((t) => t.slug === slug) || null;
+        setTool(localTool);
       } catch (err) {
-        console.error('Araç detayları çekilirken hata:', err);
-        setTool(null);
+        console.error('Hata:', err);
+        const localTool = (toolsData as Tool[]).find((t) => t.slug === slug) || null;
+        setTool(localTool);
       } finally {
         setLoading(false);
       }
@@ -95,10 +111,11 @@ export default function ToolDetailPage() {
     );
   }
 
-  const toolReviews = reviews.filter(r => r.toolId === tool.id);
-  const avgRating = toolReviews.length > 0 
-    ? (toolReviews.reduce((acc, r) => acc + r.rating, 0) / toolReviews.length).toFixed(1) 
-    : null;
+  const toolReviews = reviews.filter((r) => r.toolId === tool.id);
+  const avgRating =
+    toolReviews.length > 0
+      ? (toolReviews.reduce((acc, r) => acc + r.rating, 0) / toolReviews.length).toFixed(1)
+      : null;
 
   const handleAddReview = (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,7 +127,7 @@ export default function ToolDetailPage() {
       userName,
       rating: Number(rating),
       comment,
-      date: new Date().toLocaleDateString('tr-TR')
+      date: new Date().toLocaleDateString('tr-TR'),
     };
 
     const updatedReviews = [newReview, ...reviews];
@@ -146,7 +163,9 @@ export default function ToolDetailPage() {
         </p>
 
         <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 mb-8">
-          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Fiyatlandırma Detayları</h3>
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+            Fiyatlandırma Detayları
+          </h3>
           <p className="text-slate-200 text-base font-medium">
             {tool.priceDetails || 'Fiyatlandırma detayları belirtilmemiş.'}
           </p>
@@ -154,7 +173,7 @@ export default function ToolDetailPage() {
 
         {tool.tags && tool.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8">
-            {tool.tags.map(tag => (
+            {tool.tags.map((tag) => (
               <span key={tag} className="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg">
                 #{tag}
               </span>
@@ -162,10 +181,10 @@ export default function ToolDetailPage() {
           </div>
         )}
 
-        <a 
-          href={tool.websiteUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={tool.websiteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-2xl font-bold transition-colors shadow-lg mb-16"
         >
           Resmi Web Sitesini Ziyaret Et ➔
@@ -176,12 +195,14 @@ export default function ToolDetailPage() {
           <h3 className="text-2xl font-bold mb-6">Kullanıcı Yorumları ve Puanlar</h3>
 
           <form onSubmit={handleAddReview} className="bg-slate-900 p-6 rounded-2xl border border-slate-800 mb-10 space-y-4">
-            <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Bu Araç İçin Yorum Yap</h4>
-            
+            <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">
+              Bu Araç İçin Yorum Yap
+            </h4>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-1">Adınız</label>
-                <input 
+                <input
                   type="text"
                   required
                   placeholder="Adınız Soyadınız"
@@ -209,7 +230,7 @@ export default function ToolDetailPage() {
 
             <div>
               <label className="block text-xs font-medium text-slate-400 mb-1">Yorumunuz</label>
-              <textarea 
+              <textarea
                 required
                 rows={3}
                 placeholder="Bu araç hakkında ne düşünüyorsunuz?"
@@ -219,7 +240,7 @@ export default function ToolDetailPage() {
               />
             </div>
 
-            <button 
+            <button
               type="submit"
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold text-sm transition-colors shadow-sm"
             >
@@ -237,16 +258,13 @@ export default function ToolDetailPage() {
                     <span className="font-bold text-sm text-slate-200">{rev.userName}</span>
                     <span className="text-xs text-slate-500">{rev.date}</span>
                   </div>
-                  <div className="text-amber-400 text-xs mb-2">
-                    {'⭐'.repeat(rev.rating)}
-                  </div>
+                  <div className="text-amber-400 text-xs mb-2">{'⭐'.repeat(rev.rating)}</div>
                   <p className="text-slate-300 text-sm leading-relaxed">{rev.comment}</p>
                 </div>
               ))
             )}
           </div>
         </div>
-
       </div>
     </main>
   );

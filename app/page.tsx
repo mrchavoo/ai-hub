@@ -433,6 +433,27 @@ export default function HomePage() {
           </div>
         </div>
       )}
+      {/* Footer */}
+        <footer className="text-center text-xs text-slate-500 border-t border-slate-900 pt-8 space-y-3">
+          <div className="flex flex-wrap justify-center gap-6 text-slate-400 font-medium">
+            <Link href="/hakkimizda" className="hover:text-blue-400 transition-colors">
+              Hakkımızda
+            </Link>
+            <Link href="/gizlilik-politikasi" className="hover:text-blue-400 transition-colors">
+              Gizlilik Politikası
+            </Link>
+            <Link href="/iletisim" className="hover:text-blue-400 transition-colors">
+              İletişim
+            </Link>
+          </div>
+          <p>© 2026 AI Hub. Tüm hakları saklıdır.</p>
+          <p>
+            İletişim & Sponsorluk:{' '}
+            <a href="mailto:torqbox.tr@gmail.com" className="text-blue-400 hover:underline">
+              torqbox.tr@gmail.com
+            </a>
+          </p>
+        </footer>
     </main>
   );
 }
